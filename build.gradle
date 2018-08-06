@@ -1,6 +1,7 @@
 buildscript {
     ext.kotlin_version = '1.2.31'
     ext.spring_version = '5.0.8.RELEASE'
+    ext.logback_version = '1.1.3'
 
     repositories {
         mavenCentral()
@@ -29,9 +30,9 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
     // log
-    compile 'org.slf4j:slf4j-api:1.7.14'
-    compile 'ch.qos.logback:logback-core:1.1.3'
-    compile 'ch.qos.logback:logback-classic:1.1.3'
+    compile "org.slf4j:slf4j-api:1.7.14"
+    compile "ch.qos.logback:logback-core:$logback_version"
+    compile "ch.qos.logback:logback-classic:$logback_version"
 
     // spring
     compile "org.springframework:spring-core:$spring_version"
