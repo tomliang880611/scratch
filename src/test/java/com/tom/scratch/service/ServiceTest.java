@@ -1,6 +1,7 @@
 package com.tom.scratch.service;
 
-import com.tom.scratch.config.ApplicationConfig;
+import com.tom.scratch.dao.UserDTO;
+import com.tom.scratch.dao.UserService;
 import mockit.Expectations;
 import mockit.Mocked;
 import org.hamcrest.CoreMatchers;
@@ -12,10 +13,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = ApplicationConfig.class)
+@ContextConfiguration(classes = TestConfig.class)
 public class ServiceTest {
     @Autowired
     private DoSomething sayer;
+
+    @Autowired
+    private UserService userService;
 
     @Test
     public void test_say_something() {
@@ -32,5 +36,13 @@ public class ServiceTest {
                 false,
                 CoreMatchers.equalTo(doer.doSomething())
         );
+    }
+
+    @Test
+    public void test_add_a_user() {
+        UserDTO user = new UserDTO("Jerry", 25);
+
+        boolean result = userService.insert(user);
+        Assert.assertThat(true, CoreMatchers.equalTo(result));
     }
 }

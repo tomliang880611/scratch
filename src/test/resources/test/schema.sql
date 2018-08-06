@@ -1,0 +1,16 @@
+SET DATABASE SQL SYNTAX ORA TRUE;
+
+BEGIN
+  EXECUTE IMMEDIATE 'drop TABLE MY_USER';
+EXCEPTION
+  WHEN OTHERS THEN
+    IF sqlcode != -0942 THEN RAISE;
+    END IF;
+END;
+
+create table MY_USER (
+  name VARCHAR2(255 CHAR),
+  age NUMBER(15,0)
+);
+
+commit;
