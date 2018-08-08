@@ -38,6 +38,7 @@ dependencies {
     compile "org.springframework:spring-core:$spring_version"
     compile "org.springframework:spring-beans:$spring_version"
     compile "org.springframework:spring-context:$spring_version"
+    compile "org.springframework:spring-jdbc:$spring_version"
 
     // testing
     compile 'org.jmockit:jmockit:1.41'
