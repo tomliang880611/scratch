@@ -1,7 +1,7 @@
 package com.tom.scratch.service;
 
-import com.tom.scratch.dao.UserDTO;
-import com.tom.scratch.dao.UserService;
+import com.tom.scratch.dao.StudentService;
+import com.tom.scratch.domain.Student;
 import mockit.Expectations;
 import mockit.Mocked;
 import org.hamcrest.CoreMatchers;
@@ -19,7 +19,7 @@ public class ServiceTest {
     private DoSomething sayer;
 
     @Autowired
-    private UserService userService;
+    private StudentService studentService;
 
     @Test
     public void test_say_something() {
@@ -40,9 +40,8 @@ public class ServiceTest {
 
     @Test
     public void test_add_a_user() {
-        UserDTO user = new UserDTO("Jerry", 25);
-
-        boolean result = userService.insert(user);
-        Assert.assertThat(true, CoreMatchers.equalTo(result));
+        Student student = studentService.findById("1");
+        Assert.assertThat(student.getAge(), CoreMatchers.equalTo(20));
+        Assert.assertThat(student.getName(), CoreMatchers.equalTo("Jerry"));
     }
 }

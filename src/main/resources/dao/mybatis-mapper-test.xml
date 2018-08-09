@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 		PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.tom.scratch.StudentMappers">
+<mapper namespace="com.tom.scratch.mappers.StudentMappers">
 	<select id="findbyid" parameterType="Integer" resultMap="StudentResult">
         select *from student where id=#{id}
     </select>
@@ -11,13 +11,9 @@
         select *from student where gid=#{gid}
     </select>
 
-	<resultMap type="Student" id="StudentResult">
+	<resultMap type="com.tom.scratch.domain.Student" id="StudentResult">
 		<id property="id" column="id"/>
 		<result property="name" column="name"/>
 		<result property="age" column="age"/>
-		<association property="address" column="addid" select="com.tom.scratch.AddressMappers.findbyid">
-		</association>
-		<association property="grade" column="gid" select="com.tom.scratch.GradeMappers.findbyid">
-		</association>
 	</resultMap>
 </mapper>
